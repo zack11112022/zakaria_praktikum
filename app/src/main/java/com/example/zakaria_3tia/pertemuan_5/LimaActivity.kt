@@ -34,7 +34,6 @@ class LimaActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
 
         }
-        // Listener untuk tombol Buka WebView
         binding.btnWebView.setOnClickListener {
             val url = "https://www.kompas.com"
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))

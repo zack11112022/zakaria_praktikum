@@ -3,11 +3,13 @@ package com.example.zakaria_3tia
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.zakaria_3tia.pertemuan_5.LimaActivity
 import com.example.zakaria_3tia.databinding.ActivityMainBinding
+import com.example.zakaria_3tia.pertemuan_6.EnamActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -26,26 +28,23 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Ambil data Intent dari LoginAktivity
         val user = intent.getStringExtra("username")
         val pass = intent.getStringExtra("password")
-
-        // Disesuaikan: Menampilkan data pada ID textView2 yang ada di activity_main.xml
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
         binding.textView2.text = "Username: $user\nPassword: $pass"
 
-        // Listener Tombol SnackBar
         binding.btnSnackBar.setOnClickListener {
             Snackbar.make(
                 binding.root, "Halo ini Snackbar",
                 Snackbar.LENGTH_LONG
             )
                 .setAction("KEMBALI") {
-                    finish() // Menutup MainActivity untuk kembali ke LoginAktivity
+                    finish()
                 }
                 .show()
         }
 
-        // Disesuaikan: Menggunakan ID btnAlertDialog sesuai dengan activity_main.xml
+
         binding.btnAlertDialog.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Hapus data")
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     dialog.dismiss()
                 }
                 .setPositiveButton("Hapus") { dialog, _ ->
-                    // Mengosongkan text pada textView2
+
                     binding.textView2.text = ""
                     dialog.dismiss()
                 }
@@ -63,6 +62,27 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnToLima.setOnClickListener {
             startActivity(Intent(this, LimaActivity::class.java))
+        }
+        binding.btnLogout.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Apakah Anda yakin ingin keluar?")
+                .setPositiveButton("Ya") { dialog, _ ->
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+                    dialog.dismiss()
 
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                }
+                .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
+                .show()
+        }
+        binding.btnToEnam.setOnClickListener {
+            val intent = Intent(this@MainActivity, EnamActivity::class.java)
+            startActivity(intent)
         }
     }}
