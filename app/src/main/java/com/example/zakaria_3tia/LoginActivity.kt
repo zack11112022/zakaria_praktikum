@@ -7,16 +7,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.zakaria_3tia.databinding.ActivityLoginAktivityBinding
+import com.example.zakaria_3tia.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginAktivityBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        binding = ActivityLoginAktivityBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
@@ -30,7 +30,12 @@ class LoginActivity : AppCompatActivity() {
             val pass = binding.edtPassword.text.toString()
 
             if (user.isNotEmpty() && user == pass) {
-                startActivity(Intent(this, MainActivity::class.java))
+                val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putBoolean("isLogin", true)
+                    apply()
+                }
+                startActivity(Intent(this, BaseActivity::class.java))
                 finish()
             } else {
                 AlertDialog.Builder(this)

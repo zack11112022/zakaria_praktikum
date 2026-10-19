@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Zakaria_3TIA" parent="Base.Theme.Zakaria_3TIA" />
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

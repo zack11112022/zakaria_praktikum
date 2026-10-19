@@ -4,43 +4,53 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-<application
-    android:allowBackup="true"
-    android:dataExtractionRules="@xml/data_extraction_rules"
-    android:fullBackupContent="@xml/backup_rules"
-    android:icon="@mipmap/ic_launcher"
-    android:label="Zakaria_3TIA"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/Theme.Zakaria_3TIA">
-    <activity
-        android:name=".LoginActivity"
-        android:exported="false"
-        android:windowSoftInputMode="adjustResize"/>
-    <activity
-        android:name=".MainActivity"
-        android:exported="false"
-        android:windowSoftInputMode="adjustResize" />
-    <activity
-        android:name=".pertemuan_5.LimaActivity"
-        android:exported="false"
-        android:windowSoftInputMode="adjustResize" />
-    <activity
-        android:name=".pertemuan_5.WebViewActivity"
-        android:exported="false"
-        android:windowSoftInputMode="adjustResize" />
-    <activity
-        android:name=".SplashScreenActivity"
-        android:exported="true"
-        android:windowSoftInputMode="adjustResize">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity
-        android:name=".pertemuan_6.EnamActivity"
-        android:exported="false"
-        android:windowSoftInputMode="adjustResize"/>
-</application>
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Zakaria_3TIA"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Zakaria_3TIA">
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Home.pertemuan_5.LimaActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Home.pertemuan_5.WebViewActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Home.pertemuan_6.EnamActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".BaseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Zakaria_3TIA"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Message.ChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
 </manifest>
