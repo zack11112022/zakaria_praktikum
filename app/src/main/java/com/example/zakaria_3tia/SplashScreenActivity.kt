@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.zakaria_3tia.Message.tutorial.TutorialMessageActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -21,16 +22,18 @@ class SplashScreenActivity : AppCompatActivity() {
             insets
         }
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
-        // Kondisi jika isLogin bernilai true
+        // Kalau sudah login, langsung ke Home
         val isLogin = sharedPref.getBoolean("isLogin", false)
         if (isLogin) {
             startActivity(Intent(this, BaseActivity::class.java))
             finish()
             return
         }
+        // Kalau belum login, tampilkan Tutorial dulu (baru ke Login)
         lifecycleScope.launch {
-            delay(2000) // simulasi pengambilan data selama 2 detik
-            val intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
+            delay(2000)
+            val intent = Intent(this@SplashScreenActivity, TutorialMessageActivity::class.java)
+            intent.putExtra(TutorialMessageActivity.EXTRA_ONBOARDING, true)
             startActivity(intent)
             finish()
         }
