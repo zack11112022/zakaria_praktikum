@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.zakaria_3tia.Home.pertemuan_5.LimaActivity
 import com.example.zakaria_3tia.Home.pertemuan_6.EnamActivity
+import com.example.zakaria_3tia.Home.pertemuan_9.NinthActivity
 import com.example.zakaria_3tia.LoginActivity
 import com.example.zakaria_3tia.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -69,6 +70,10 @@ class HomeFragment : Fragment() {
 
         binding.btnToSixth.setOnClickListener {
             startActivity(Intent(requireContext(), EnamActivity::class.java))
+        }
+
+        binding.btnToNinth.setOnClickListener {
+            startActivity(Intent(requireContext(), NinthActivity::class.java))
         }
 
         // Logout: dialog konfirmasi, hapus SharedPreferences, kembali ke Login (bersihkan back stack)
